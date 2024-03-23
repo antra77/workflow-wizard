@@ -1,29 +1,22 @@
 import React from "react";
-import './App.css'
+import "./App.css";
+import Sidebar from "./components/Sidebar";
+import {Dashboard,Projects,Schedule,Tasks,Profile} from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import { Navbar, Sidebar } from "./components";
-
-import { Gantt, Kanban, Progress, Schedular, Team, ToDo } from "./pages";
-
 const App = () => {
   return (
     <BrowserRouter>
-    <div className="flex">
-      <Sidebar />
-      <div className="flex flex-col w-full">
-        <Navbar />
+      <div className="flex container-fluid gap-1">
+        <Sidebar />
         <Routes>
-            <Route path="/" element={<Progress />} />
-            <Route path="/gantt" element={<Gantt />} />
-            <Route path="/kanban" element={<Kanban />} />
-            <Route path="/schedular" element={<Schedular />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/todo" element={<ToDo />} />
-          </Routes>
+          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/schedule" element={<Schedule />}></Route>
+          <Route path="/projects" element={<Projects />}></Route>
+          <Route path="/tasks" element={<Tasks />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+        </Routes>
       </div>
-    </div>
-  </BrowserRouter>
+    </BrowserRouter>
   );
 };
 
