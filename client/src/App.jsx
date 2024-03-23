@@ -8,6 +8,7 @@ const App = () => {
     <BrowserRouter>
       <div className="flex container-fluid gap-1">
         <Sidebar />
+        
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
           <Route path="/schedule" element={<Schedule />}></Route>

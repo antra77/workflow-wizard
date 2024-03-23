@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Todo from "./Todo";
 import { FcPlus } from "react-icons/fc";
-import SubHeader from "./SubHeader";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -34,7 +33,6 @@ const TodoList = () => {
 
   return (
     <div>
-      <SubHeader title="Daily Tasks"/>
       <div className="flex flex-col w-[100%] md:w-[60%] md:ml-52">
         <div className="mb-4 mt-10 flex">
           <input
