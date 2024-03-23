@@ -1,6 +1,0 @@
-export { default as Gantt } from './Gantt'
-export { default as Kanban } from './Kanban'
-export { default as Progress } from './Progress'
-export { default as Schedular } from './Schedular'
-export { default as Team } from './Team'
-export { default as ToDo } from './ToDo'
