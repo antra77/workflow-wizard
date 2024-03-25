@@ -1,3 +1,6 @@
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+
+
 
 
 ::-webkit-scrollbar {
@@ -12,3 +15,5 @@
 ::-webkit-scrollbar-track {
     background-color: transparent;
 }
+
+

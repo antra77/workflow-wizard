@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { FcHighPriority,FcLowPriority,FcOk,FcEmptyTrash,FcRefresh,FcExternal  } from "react-icons/fc";
+import { FiBell,FiBellOff } from "react-icons/fi";
+import { LuTrash } from "react-icons/lu";
+import { TbProgressBolt } from "react-icons/tb";
+import { IoCheckmarkDoneCircleOutline,IoCheckmarkDoneCircleSharp } from "react-icons/io5";
+import { MdOutlineCircle } from "react-icons/md";
+
+
 
 
 
@@ -51,7 +57,7 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
   };
 
   return (
-    <div className="flex justify-between items-center p-2 rounded-xl m-5 border-b">
+    <div className="flex bg-zinc-50 m-5 p-5 rounded-xl drop-shadow-md">
       <label className="flex items-center space-x-2 cursor-pointer">
         <input
           type="checkbox"
@@ -65,10 +71,10 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
           }`}
           onClick={handleCheckboxChange}
         >
-          {status === 'completed' && <FcOk className="text-white text-3xl" />}
-          {status === 'priority' && <FcHighPriority className="text-white text-3xl" />}
-          {status === 'in progress' && <FcRefresh className="text-white text-3xl" />}
-          {status === 'none' && <FcExternal  className="text-white text-3xl" />}
+          {status === 'completed' && <IoCheckmarkDoneCircleSharp className="text-sky-800 text-3xl" />}
+          {status === 'priority' && <FiBell className="text-sky-800 text-3xl" />}
+          {status === 'in progress' && <TbProgressBolt className="text-sky-800 text-3xl" />}
+          {status === 'none' && <MdOutlineCircle  className="text-sky-800 text-3xl" />}
         </div>
         <span className={status === 'completed' ? 'line-through' : ''}>
           {editing ? (
@@ -87,26 +93,26 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
           )}
         </span>
       </label>
-      <div className="flex gap-2">      <button
+      <div className="flex gap-5 ml-5">      <button
         onClick={handlePriorityToggle}
         className='text-xl'
       >
-        {priority ? <FcLowPriority className='text-2xl'/> : <FcHighPriority className='text-2xl'/>}
+        {priority ? <FiBellOff id='details' title='remove priority' className='text-2xl text-sky-800'/> : <FiBell id='details' title='mark as priority' className='text-2xl text-sky-800'/>}
       </button>
       <button
         onClick={handleProgressToggle}
         className='text-xl'
       >
-        <FcRefresh className='text-2xl'/>
+        <TbProgressBolt id='details' title='mark in progress' className='text-2xl text-sky-800'/>
       </button>
       <button
         onClick={handleCompletedToggle}
         className='text-xl'
       >
-        <FcOk className='text-2xl'/>
+        <IoCheckmarkDoneCircleOutline id='details' title='mark as completed' className='text-2xl text-sky-800'/>
       </button>
       <button onClick={handleDelete}>
-        <FcEmptyTrash className='text-2xl' />
+        <LuTrash id='details' title='delete' className='text-2xl text-sky-800' />
       </button>
 </div>
     </div>

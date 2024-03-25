@@ -7,12 +7,12 @@ const Navbar = ({ title }) => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div className="container-fluid flex justify-between w-full rounded-2xl drop-shadow-xl">
-      <h1 className="text-2xl font-medium text-blue-950 m-5 tracking-tighter cursor-default">
+    <div className="container-fluid flex justify-between w-full rounded-2xl drop-shadow-xl mt-2 relative" style={{ zIndex: 999 }}>
+      <h1 className="text-2xl font-medium text-sky-950 m-5 tracking-tighter cursor-default">
         {title}
       </h1>
       <div className="flex gap-4 items-center mr-4">
-        <p className="font-semibold text-blue-950 cursor-default">Hi, Sarah</p>
+        <p className="font-semibold text-sky-950 cursor-default">Hi, Sarah</p>
         <div
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
