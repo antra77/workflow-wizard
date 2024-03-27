@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FcWorkflow } from "react-icons/fc";
-import { TbLogout, TbSun, TbMoon } from "react-icons/tb";
+import { TbLogout, TbSun } from "react-icons/tb";
 import { PiChartLineUp } from "react-icons/pi";
 import { BiCalendar } from "react-icons/bi";
 import { LuFolderKanban, LuListTodo } from "react-icons/lu";
@@ -8,31 +8,24 @@ import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
-  const [darkMode, setDarkMode] = useState(false); // State for dark mode
   const location = useLocation(); // Get the current location
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
     <div
-      className={`container-fluid rounded-2xl drop-shadow-xl m-2 ${
-        darkMode ? "bg-gray-800 text-white" : "bg-zinc-50 text-sky-950"
-      } ${showSidebar ? "w-64" : "w-16"} h-screen`}
+      className={`container-fluid rounded-2xl drop-shadow-xl m-2 bg-zinc-50 text-sky-950 ${
+        showSidebar ? "w-64" : "w-16"
+      } h-screen`}
     >
       {showSidebar ? (
         <>
           <button title="click to close" onClick={toggleSidebar}>
             <div className="flex gap-2 justify-center items-center mt-8 m-2">
               <FcWorkflow title="click to close" className="text-4xl" />
-              <h1 className="font-bold">
-                {darkMode ? "Workflow Wizard" : "Workflow Wizard"}
-              </h1>
+              <h1 className="font-bold">Workflow Wizard</h1>
             </div>
           </button>
 
@@ -46,14 +39,8 @@ const Sidebar = () => {
               <div key={index} className="flex gap-2 items-center ml-2">
                 <Link
                   to={to}
-                  className={`flex items-center w-full ${
-                    darkMode ? "text-white" : "text-sky-950"
-                  } text-sm ${
-                    location.pathname === to
-                      ? darkMode
-                        ? "bg-gray-900 drop-shadow-lg"
-                        : "bg-zinc-50 drop-shadow-lg"
-                      : ""
+                  className={`flex items-center w-full text-sky-950 text-sm ${
+                    location.pathname === to ? "bg-zinc-50 drop-shadow-lg" : ""
                   } rounded-xl py-3`}
                 >
                   <Icon className="text-3xl ml-2" />
@@ -61,28 +48,15 @@ const Sidebar = () => {
                 </Link>
               </div>
             ))}
-            <div
-              className={`border ${
-                darkMode ? "border-gray-600" : "border-gray-200"
-              } border-t-2 border-b-2 border-l-0 border-r-0 flex flex-col m-2 ${
-                darkMode ? "text-white" : "text-sky-950"
-              }`}
-            >
-              {[
-                {
-                  Icon: darkMode ? TbMoon : TbSun,
-                  text: darkMode ? "Dark Mode" : "Light Mode",
-                  onClick: toggleDarkMode,
-                },
-                { Icon: TbLogout, text: "Logout", onClick: () => {} },
-              ].map(({ Icon, text, onClick }, index) => (
-                <div key={index} className="flex gap-3 items-center m-5">
-                  <Icon className="text-2xl" />
-                  <button onClick={onClick} className="text-sm">
-                    {text}
-                  </button>
-                </div>
-              ))}
+            <div className="border border-gray-200 border-t-2 border-b-2 border-l-0 border-r-0 flex flex-col m-3 text-sky-950">
+              <div className="flex items-center m-3">
+              <TbSun className="text-2xl" />
+              <p className="text-sm m-3" >Light Mode</p>
+              </div>
+              <div className="flex items-center ml-3">
+              <TbLogout className="text-2xl" />
+              <p className="text-sm m-3" >Logout</p>
+              </div>
             </div>
             <div className="flex flex-col gap-2 items-center justify-center mt-5">
               <img
@@ -91,7 +65,7 @@ const Sidebar = () => {
                 alt="pic"
               />
               <a href="/profile" className="text-sm font-semibold">
-                {darkMode ? "Sarah Parker" : "Sarah Parker"}
+                Sarah Parker
               </a>
               <p className="text-xs tracking-tight">sarah@mail.com</p>
             </div>
@@ -113,27 +87,9 @@ const Sidebar = () => {
               )
             )}
           </div>
-          <div
-            className={`border ${
-              darkMode ? "border-gray-600" : "border-gray-200"
-            } border-t-2 border-b-2 border-l-0 border-r-0 flex flex-col mt-5 mb-5 m-2 ${
-              darkMode ? "text-white" : "text-sky-950"
-            }`}
-          >
-            {darkMode ? (
-              <TbMoon
-                key="moon"
-                className="text-2xl m-3"
-                onClick={toggleDarkMode}
-              />
-            ) : (
-              <TbSun
-                key="sun"
-                className="text-2xl m-3"
-                onClick={toggleDarkMode}
-              />
-            )}
-            <TbLogout key="logout" className="text-2xl m-3" />
+          <div className="border border-gray-200 border-t-2 border-b-2 border-l-0 border-r-0 flex flex-col mt-5 mb-5 m-2 text-sky-950">
+            <TbSun className="text-2xl m-3" />
+            <TbLogout className="text-2xl m-3" />
           </div>
           <div className="flex flex-col gap-2 items-center justify-center mt-10">
             <img
