@@ -18,7 +18,7 @@ const Sidebar = () => {
     <div
       className={`container-fluid rounded-2xl drop-shadow-xl m-2 bg-zinc-50 text-sky-950 ${
         showSidebar ? "w-64" : "w-16"
-      } h-screen`}
+      }`}
     >
       {showSidebar ? (
         <>
@@ -50,12 +50,12 @@ const Sidebar = () => {
             ))}
             <div className="border border-gray-200 border-t-2 border-b-2 border-l-0 border-r-0 flex flex-col m-3 text-sky-950">
               <div className="flex items-center m-3">
-              <TbSun className="text-2xl" />
-              <p className="text-sm m-3" >Light Mode</p>
+                <TbSun className="text-2xl" />
+                <p className="text-sm m-3">Light Mode</p>
               </div>
               <div className="flex items-center ml-3">
-              <TbLogout className="text-2xl" />
-              <p className="text-sm m-3" >Logout</p>
+                <TbLogout className="text-2xl" />
+                <p className="text-sm m-3">Logout</p>
               </div>
             </div>
             <div className="flex flex-col gap-2 items-center justify-center mt-5">
