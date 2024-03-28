@@ -41,7 +41,7 @@ minorGridLines: {
 }};
 
   return (
-    <div className="bg-zinc-50 w-3/4 m-5 p-8 rounded-xl drop-shadow-md ">
+    <div className="bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-50 w-3/4 m-5 p-8 rounded-xl drop-shadow-md ">
       <ChartComponent id="charts" primaryXAxis={primaryxAxis} primaryYAxis={primaryyAxis}>
         <Inject
           services={[SplineAreaSeries, Legend, Tooltip, DataLabel, Category]}
@@ -54,7 +54,7 @@ minorGridLines: {
             width={1}
             name="Tasks"
             type="SplineArea"
-            fill="#477591"
+            fill="#004B84"
             opacity='0.5'
             marker={{ visible: false }}
             

@@ -9,7 +9,7 @@ import {
 
 const Dashboard = () => {
   return (
-    <div className="container-fluid bg-zinc-50 w-full m-2 rounded-2xl drop-shadow-xl">
+    <div className="container-fluid bg-zinc-50 dark:bg-zinc-800 w-full m-2 rounded-2xl drop-shadow-xl">
       <Navbar title={"Dashboard"} />
       <div className="flex gap-2">
         <Welcome />

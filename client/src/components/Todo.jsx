@@ -57,7 +57,7 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
   };
 
   return (
-    <div className="flex bg-zinc-50 m-5 p-5 rounded-xl drop-shadow-md">
+    <div className="flex bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-50 m-5 p-5 rounded-xl drop-shadow-md">
       <label className="flex items-center space-x-2 cursor-pointer">
         <input
           type="checkbox"
@@ -71,10 +71,10 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
           }`}
           onClick={handleCheckboxChange}
         >
-          {status === 'completed' && <IoCheckmarkDoneCircleSharp className="text-sky-800 text-3xl" />}
-          {status === 'priority' && <FiBell className="text-sky-800 text-3xl" />}
-          {status === 'in progress' && <TbProgressBolt className="text-sky-800 text-3xl" />}
-          {status === 'none' && <MdOutlineCircle  className="text-sky-800 text-3xl" />}
+          {status === 'completed' && <IoCheckmarkDoneCircleSharp className="text-sky-800 dark:text-zinc-50 text-3xl" />}
+          {status === 'priority' && <FiBell className="text-sky-800 dark:text-zinc-50 text-3xl" />}
+          {status === 'in progress' && <TbProgressBolt className="text-sky-800 dark:text-zinc-50 text-3xl" />}
+          {status === 'none' && <MdOutlineCircle  className="text-sky-800 dark:text-zinc-50 text-3xl" />}
         </div>
         <span className={status === 'completed' ? 'line-through' : ''}>
           {editing ? (
@@ -97,22 +97,22 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
         onClick={handlePriorityToggle}
         className='text-xl'
       >
-        {priority ? <FiBellOff id='details' title='remove priority' className='text-2xl text-sky-800'/> : <FiBell id='details' title='mark as priority' className='text-2xl text-sky-800'/>}
+        {priority ? <FiBellOff id='details' title='remove priority' className='text-2xl text-sky-800 dark:text-zinc-50'/> : <FiBell id='details' title='mark as priority' className='text-2xl text-sky-800 dark:text-zinc-50'/>}
       </button>
       <button
         onClick={handleProgressToggle}
         className='text-xl'
       >
-        <TbProgressBolt id='details' title='mark in progress' className='text-2xl text-sky-800'/>
+        <TbProgressBolt id='details' title='mark in progress' className='text-2xl text-sky-800 dark:text-zinc-50'/>
       </button>
       <button
         onClick={handleCompletedToggle}
         className='text-xl'
       >
-        <IoCheckmarkDoneCircleOutline id='details' title='mark as completed' className='text-2xl text-sky-800'/>
+        <IoCheckmarkDoneCircleOutline id='details' title='mark as completed' className='text-2xl text-sky-800 dark:text-zinc-50'/>
       </button>
       <button onClick={handleDelete}>
-        <LuTrash id='details' title='delete' className='text-2xl text-sky-800' />
+        <LuTrash id='details' title='delete' className='text-2xl text-sky-800 dark:text-zinc-50' />
       </button>
 </div>
     </div>

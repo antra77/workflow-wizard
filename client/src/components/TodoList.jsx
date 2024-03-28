@@ -39,10 +39,10 @@ const TodoList = ({ title }) => {
   const taskCount = todos.length;
 
   return (
-    <div className="bg-zinc-50 m-5 p-2 rounded-xl drop-shadow-md">
+    <div className="bg-zinc-50 dark:bg-zinc-700 m-5 p-2 rounded-xl drop-shadow-md">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl m-2 p-5 font-semibold text-sky-900 text-center">{title}</h1>
-        <button onClick={toggleExpand} className="text-3xl text-sky-800 p-2">
+        <h1 className="text-xl m-2 p-5 font-semibold text-sky-900 dark:text-zinc-50  text-center">{title}</h1>
+        <button onClick={toggleExpand} className="text-3xl text-sky-800 dark:text-zinc-50 p-2">
           {isExpanded ? <IoChevronUpCircleSharp title='Collapse' /> : <IoChevronDownCircleSharp title='Expand' />}
         </button>
       </div>
@@ -53,10 +53,10 @@ const TodoList = ({ title }) => {
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              className="bg-zinc-50 m-2 p-5 rounded-xl drop-shadow-md outline-none"
+              className="bg-zinc-50 dark:bg-zinc-600 dark:text-zinc-50 m-2 p-5 rounded-xl drop-shadow-md  outline-none"
             />
             <button onClick={handleAddTodo} className="pl-5">
-              <IoAddCircleSharp id='details' title='add a task' className="text-4xl text-sky-800" />
+              <IoAddCircleSharp id='details' title='add a task' className="text-4xl text-sky-800 dark:text-zinc-50" />
             </button>
           </div>
           <div>
@@ -69,7 +69,7 @@ const TodoList = ({ title }) => {
               />
             ))}
           </div>
-          <p className="bg-zinc-50 m-10 p-5 rounded-xl drop-shadow-md">Total Tasks: {taskCount}</p> {/* Display task count */}
+          <p className="bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-50 m-10 p-5 rounded-xl drop-shadow-md">Total Tasks: {taskCount}</p> {/* Display task count */}
         </div>
       )}
     </div>
