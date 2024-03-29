@@ -1,0 +1,35 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore any environment-specific configuration files
+.env
+
+# Ignore logs and runtime data
+logs/
+*.log
+
+# Ignore MongoDB data directory (if storing data locally)
+/data/
+
+# Ignore build artifacts
+/build/
+/dist/
+/public/
+
+# Ignore client-side dependencies (if using create-react-app or similar)
+client/node_modules/
+
+# Ignore compiled files
+*.pyc
+*.class
+*.war
+*.ear
+*.jar
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore package-lock.json and yarn.lock files (if using npm or yarn)
+package-lock.json
+yarn.lock

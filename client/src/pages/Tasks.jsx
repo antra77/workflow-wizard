@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, TodoList } from "../components/index";
+import Sidebar from '../components/Sidebar'
 
 const Tasks = () => {
   const [todoLists, setTodoLists] = useState([]);
@@ -23,6 +24,8 @@ const Tasks = () => {
   };
 
   return (
+    <div className="flex container-fluid gap-1 dark:bg-zinc-900">
+      <Sidebar />
     <div className="container-fluid bg-zinc-50 dark:bg-zinc-800 w-full  m-2 rounded-2xl drop-shadow-xl">
       <Navbar title={"Tasks"} />
       <div className="flex items-center justify-center mt-4">
@@ -64,7 +67,7 @@ const Tasks = () => {
           </div>
         ))}
       </div>
-    </div>
+    </div></div>
   );
 };
 

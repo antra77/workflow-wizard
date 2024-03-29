@@ -32,7 +32,7 @@ const Sidebar = () => {
 
           <div className="flex flex-col gap-2 mt-3">
             {[
-              { Icon: PiChartLineUp, text: "Dashboard", to: "/" },
+              { Icon: PiChartLineUp, text: "Dashboard", to: "/dashboard" },
               { Icon: BiCalendar, text: "Schedule", to: "/schedule" },
               { Icon: LuFolderKanban, text: "Projects", to: "/projects" },
               { Icon: LuListTodo, text: "Tasks", to: "/tasks" },
@@ -41,7 +41,9 @@ const Sidebar = () => {
                 <Link
                   to={to}
                   className={`flex items-center w-full text-sky-950 dark:text-zinc-50 text-sm ${
-                    location.pathname === to ? "bg-zinc-50 dark:bg-zinc-700 drop-shadow-lg" : ""
+                    location.pathname === to
+                      ? "bg-zinc-50 dark:bg-zinc-700 drop-shadow-lg"
+                      : ""
                   } rounded-xl py-3`}
                 >
                   <Icon className="text-3xl ml-2" />
@@ -65,9 +67,7 @@ const Sidebar = () => {
                 src="https://images.unsplash.com/photo-1601117830731-1a36c879f666?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="pic"
               />
-              <p  className="text-sm font-semibold">
-                Sarah Parker
-              </p>
+              <p className="text-sm font-semibold">Sarah Parker</p>
               <p className="text-xs tracking-tight">sarah@mail.com</p>
             </div>
           </div>

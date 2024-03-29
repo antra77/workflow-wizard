@@ -1,28 +1,44 @@
+// src/App.jsx
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+import { Toaster } from "react-hot-toast";
+import { UserContextProvider } from "../context/userContext";
+import {
+  Login,
+  Register,
+  Dashboard,
+  Home,
+  Projects,
+  Schedule,
+  Tasks,
+  Profile,
+} from "./pages/index";
+import DarkMode from "./DarkMode";
 import "./App.css";
-import Sidebar from "./components/Sidebar";
-import DarkMode from './DarkMode'
-import {Dashboard,Projects,Schedule,Tasks,Profile} from "./pages/index";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-const App = () => {
+
+axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.withCredentials = true;
+
+function App() {
   return (
-    <BrowserRouter>
-      <div className="relative flex container-fluid gap-1 dark:bg-zinc-900">
-        
-        <Sidebar />
-        <div className="absolute right-52 top-3"><DarkMode/></div>
-        
-        
+    <UserContextProvider>
+        <div className="absolute right-52 top-3">
+          <DarkMode />
+        </div>
+        <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
         <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/schedule" element={<Schedule />}></Route>
           <Route path="/projects" element={<Projects />}></Route>
           <Route path="/tasks" element={<Tasks />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
         </Routes>
-      </div>
-    </BrowserRouter>
+    </UserContextProvider>
   );
-};
+}
 
 export default App;
