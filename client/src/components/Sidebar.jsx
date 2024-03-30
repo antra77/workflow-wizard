@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FcWorkflow } from "react-icons/fc";
 import { TbLogout } from "react-icons/tb";
 import { MdPerson } from "react-icons/md";
@@ -6,8 +6,10 @@ import { PiChartLineUp } from "react-icons/pi";
 import { BiCalendar } from "react-icons/bi";
 import { LuFolderKanban, LuListTodo } from "react-icons/lu";
 import { Link, useLocation } from "react-router-dom";
+import { UserContext } from "../../context/userContext"; // Update the path to UserContext
 
 const Sidebar = () => {
+  const { user } = useContext(UserContext);
   const [showSidebar, setShowSidebar] = useState(true);
   const location = useLocation(); // Get the current location
 
@@ -52,23 +54,27 @@ const Sidebar = () => {
               </div>
             ))}
             <div className="border border-gray-200 dark:border-gray-700 border-t-2 border-b-2 border-l-0 border-r-0 flex flex-col m-3 text-sky-950 dark:text-zinc-50">
-              <a href="/profile" className="flex items-center m-3">
+              <Link to="/profile" className="flex items-center m-3">
                 <MdPerson className="text-2xl" />
                 <p className="text-sm m-3">Profile</p>
-              </a>
+              </Link>
               <a href="/" className="flex items-center ml-3">
                 <TbLogout className="text-2xl" />
                 <p className="text-sm m-3">Logout</p>
               </a>
             </div>
             <div className="flex flex-col gap-2 items-center justify-center mt-5">
-              <img
-                className="rounded-full w-20 h-20 object-cover"
-                src="https://images.unsplash.com/photo-1601117830731-1a36c879f666?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="pic"
-              />
-              <p className="text-sm font-semibold">Sarah Parker</p>
-              <p className="text-xs tracking-tight">sarah@mail.com</p>
+              {user && (
+                <>
+                  <img
+                    className="rounded-full w-20 h-20 object-cover"
+                    src='https://images.unsplash.com/photo-1601117830731-1a36c879f666?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdvbWVuJTIwZmFjZXxlbnwwfHwwfHx8MA%3D%3D'
+                    alt="User Profile"
+                  />
+                  <p className="text-sm font-semibold">{user.name}</p>
+                  <p className="text-xs tracking-tight">{user.email}</p>
+                </>
+              )}
             </div>
           </div>
         </>
@@ -93,11 +99,13 @@ const Sidebar = () => {
             <TbLogout className="text-2xl dark:text-zinc-50 m-3" />
           </div>
           <div className="flex flex-col gap-2 items-center justify-center mt-10">
-            <img
-              className="rounded-full w-14 h-14 object-cover"
-              src="https://images.unsplash.com/photo-1601117830731-1a36c879f666?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="pic"
-            />
+            {user && (
+              <img
+                className="rounded-full w-14 h-14 object-cover"
+                src='https://images.unsplash.com/photo-1601117830731-1a36c879f666?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdvbWVuJTIwZmFjZXxlbnwwfHwwfHx8MA%3D%3D'
+                alt="User Profile"
+              />
+            )}
           </div>
         </>
       )}

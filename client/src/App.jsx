@@ -23,7 +23,7 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <UserContextProvider>
-        <div className="absolute right-52 top-3">
+        <div className="absolute right-80 top-3">
           <DarkMode />
         </div>
         <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />

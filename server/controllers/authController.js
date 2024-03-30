@@ -10,7 +10,7 @@ const auth = (req, res) => {
 
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password, photo } = req.body;
+    const { name, email, password, photo, role, contact } = req.body;
     //check if name was entered
     if (!name) {
       return res.json({
@@ -39,6 +39,8 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       photo,
+      role,
+      contact,
     });
     return res.json(user);
   } catch (error) {
@@ -63,10 +65,18 @@ const loginUser = async (req, res) => {
     const match = await comparePassword(password, user.password);
     if (match) {
       jwt.sign(
-        { email: user.email, id: user._id, name: user.name },
-        process.env.JWT_SECRET,{},(err,token)=>{
-          if(err) throw err
-          res.cookie('token',token).json(user)
+        {
+          email: user.email,
+          id: user._id,
+          name: user.name,
+          role: user.role,
+          contact: user.contact,
+        },
+        process.env.JWT_SECRET,
+        {},
+        (err, token) => {
+          if (err) throw err;
+          res.cookie("token", token).json(user);
         }
       );
     }
@@ -79,23 +89,27 @@ const loginUser = async (req, res) => {
     console.log(error);
   }
 };
-const getProfile=(req,res)=>{
-  const {token}=req.cookies
-  if(token){
-    jwt.verify(token,process.env.JWT_SECRET,{},(err,user)=>{
-      if(err) throw (err)
-      res.json(user)
-    })
+const getProfile = (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, {}, (err, decoded) => {
+      if (err) {
+        res.json(null);
+      } else {
+        const { email, id, name, role, contact } = decoded;
+        res.json({ email, id, name, role, contact });
+      }
+    });
+  } else {
+    res.json(null);
   }
-  else{
-    res.json(null)
-  }
+};
 
-}
+
 
 module.exports = {
   auth,
   registerUser,
   loginUser,
-  getProfile
+  getProfile,
 };
